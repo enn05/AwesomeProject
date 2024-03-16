@@ -7,6 +7,7 @@ import {Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components'
 
 const Home = () => {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState("")
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
       <Stack.Screen options={{
@@ -18,14 +19,22 @@ const Home = () => {
         headerRight: () => (
           <ScreenHeaderBtn iconUrl={images.profile} dimension="60%" />
         ),
-        headerTitle: ""
+        headerTitle: "JobIT"
       }} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{
           flex:1,
           padding: SIZES.medium
         }}>
-          <Welcome />
+          <Welcome 
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            handleClick={() => {
+              if(searchTerm) {
+                router.push(`/search/${searchTerm}`)
+              }
+            }}
+          />
           <Popularjobs />
           <Nearbyjobs />
         </View>

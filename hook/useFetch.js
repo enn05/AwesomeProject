@@ -7,15 +7,15 @@ const useFetch = (endpoint, query) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const options = {
-    method: 'GET',
-    url: `https://jsearch.p.rapidapi.com/${endpoint}`,
-    headers: {
-      'X-RapidAPI-Key': 'd1ee6942b5msh8c11fe79d8a4da7p1381b1jsn027fbb893c46',
-      'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-    },
-    params: { ...query },
-  };
+  // const options = {
+  //   method: 'GET',
+  //   url: `https://jsearch.p.rapidapi.com/${endpoint}`,
+  //   headers: {
+  //     'X-RapidAPI-Key': 'd1ee6942b5msh8c11fe79d8a4da7p1381b1jsn027fbb893c46',
+  //     'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+  //   },
+  //   params: { ...query },
+  // };
 
 
   const fetchData = async () => {
@@ -26,7 +26,7 @@ const useFetch = (endpoint, query) => {
       if(endpoint === 'job-details'){
         setData(dummydata.filter(job => job.job_id === query.job_id))
       } else {
-        setData(dummydata)
+        setData(dummydata.sort(() => Math.random() - 0.5).slice(0, query.length))
       }
       setIsLoading(false)
     } catch (error) {

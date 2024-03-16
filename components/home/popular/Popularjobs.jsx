@@ -9,7 +9,7 @@ import useFetch from '../../../hook/useFetch'
 
 const Popularjobs = () => {
   const router = useRouter()
-  const {data, isLoading, error} = useFetch('search', {query: 'React developer', num_pages: 1})
+  const {data, isLoading, error} = useFetch('search', {query: 'React developer', num_pages: 1, length: 5})
   const [selectedJob, setSelectedJob] = useState();
 
   // console.log(data)
@@ -39,6 +39,7 @@ const Popularjobs = () => {
             keyExtractor={item => item?.job_id}
             contentContainerStyle={{columnGap: SIZES.medium}}
             horizontal
+            showsHorizontalScrollIndicator={false}
           />
         )
       }

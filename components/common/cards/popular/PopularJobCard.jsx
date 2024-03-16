@@ -6,7 +6,7 @@ import styles from './popularjobcard.style'
 import { checkImageURL } from '../../../../utils';
 
 const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
-  console.log(selectedJob)
+  // console.log(selectedJob)
   return (
     <TouchableOpacity
       style={styles.container(selectedJob, item)}

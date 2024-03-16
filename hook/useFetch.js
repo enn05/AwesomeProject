@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import dummydata from "../utils/dummydata";
 
 const useFetch = (endpoint, query) => {
   const [data, setData] = useState([]);
@@ -21,9 +22,12 @@ const useFetch = (endpoint, query) => {
     setIsLoading(true)
 
     try {
-      const response = await axios.request(options)
-
-      setData(response.data.data)
+      // const response = await axios.request(options)
+      if(endpoint === 'job-details'){
+        setData(dummydata.filter(job => job.job_id === query.job_id))
+      } else {
+        setData(dummydata)
+      }
       setIsLoading(false)
     } catch (error) {
       console.log(error)
